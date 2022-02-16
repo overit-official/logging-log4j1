@@ -1,0 +1,27 @@
+name: Maven Deploy
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  mvn-tests:
+    name: "Run maven compile and deploy"
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Checkout sources
+        uses: actions/checkout@v2
+
+      - name: Set up JDK 1.8
+        uses: actions/setup-java@v2
+        with:
+          java-version: '8'
+          distribution: 'temurin'
+          cache: maven
+          server-id: overit-releases-repo # Value of the distributionManagement/repository/id field of the pom.xml
+          server-username: ${{ secrets.NEXUS_USERNAME }} # env variable for username in deploy
+          server-password: ${{ secrets.NEXUS_PASSWORD }} # env variable for token in deploy
+
+      - name: Maven deploy
+        run: mvn -B deploy

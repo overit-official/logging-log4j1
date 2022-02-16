@@ -580,14 +580,11 @@ target platform and specify -Dntdll_target=msbuild on the mvn command line.
     </dependency>
  </dependencies>
   <distributionManagement>
-<!--    <repository>-->
-<!--      <id>logging.repo</id>-->
-<!--      <url>scp://people.apache.org/www/people.apache.org/builds/logging/repo/</url>-->
-<!--    </repository>-->
-<!--    <site>-->
-<!--      <id>logging.site</id>-->
-<!--      <url>scp://localhost/${user.dir}/target/site-deploy</url>-->
-<!--    </site>-->
+    <repository>
+      <id>overit-releases-repo</id>
+      <name>Overit Repository</name>
+      <url>https://repo.overit.it/repository/maven-hosted-releases/</url>
+    </repository>
   </distributionManagement>
 </project>
 
