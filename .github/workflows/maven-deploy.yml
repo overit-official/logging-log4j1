@@ -20,7 +20,6 @@ jobs:
           distribution: 'temurin'
           cache: maven
           server-id: overit-releases-repo # Value of the distributionManagement/repository/id field of the pom.xml
-#          settings-path: ${{ github.workspace }}
           server-username: NEXUS_USERNAME # env variable for username in deploy
           server-password: NEXUS_PASSWORD # env variable for token in deploy
 
