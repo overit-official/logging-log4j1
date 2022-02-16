@@ -32,7 +32,7 @@ target platform and specify -Dntdll_target=msbuild on the mvn command line.
   <artifactId>log4j</artifactId>
   <packaging>bundle</packaging>
   <name>Apache Log4j</name>
-  <version>1.2.17</version>
+  <version>1.2.17.nocve</version>
   <description>Apache Log4j 1.2</description>
   <url>http://logging.apache.org/log4j/1.2/</url>
   <issueManagement>
@@ -351,6 +351,7 @@ target platform and specify -Dntdll_target=msbuild on the mvn command line.
         <artifactId>maven-javadoc-plugin</artifactId>
         <version>2.7</version>
         <configuration>
+          <failOnError>false</failOnError>
           <docfilessubdirs>true</docfilessubdirs>
           <excludedocfilessubdir>.svn</excludedocfilessubdir>
           <encoding>UTF-8</encoding>
@@ -444,22 +445,22 @@ target platform and specify -Dntdll_target=msbuild on the mvn command line.
             </instructions>
         </configuration>
       </plugin>
-      <plugin>
-        <artifactId>maven-site-plugin</artifactId>
-        <version>3.1</version>
-        <configuration>
-	       <templateFile>${basedir}/src/site/maven-site.vm</templateFile>
-           <excludeDefaults>true</excludeDefaults>
-        </configuration>
-        <executions>
-          <execution>
-		      <phase>package</phase>		
-            <goals>
-               <goal>site</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
+<!--      <plugin>-->
+<!--        <artifactId>maven-site-plugin</artifactId>-->
+<!--        <version>3.1</version>-->
+<!--        <configuration>-->
+<!--	       <templateFile>${basedir}/src/site/maven-site.vm</templateFile>-->
+<!--           <excludeDefaults>true</excludeDefaults>-->
+<!--        </configuration>-->
+<!--        <executions>-->
+<!--          <execution>-->
+<!--		      <phase>package</phase>		-->
+<!--            <goals>-->
+<!--               <goal>site</goal>-->
+<!--            </goals>-->
+<!--          </execution>-->
+<!--        </executions>-->
+<!--      </plugin>-->
     </plugins>
     <testSourceDirectory>tests/src/java</testSourceDirectory>
     <testResources>
@@ -579,14 +580,14 @@ target platform and specify -Dntdll_target=msbuild on the mvn command line.
     </dependency>
  </dependencies>
   <distributionManagement>
-    <repository>
-      <id>logging.repo</id>
-      <url>scp://people.apache.org/www/people.apache.org/builds/logging/repo/</url>
-    </repository>
-    <site>
-      <id>logging.site</id>
-      <url>scp://localhost/${user.dir}/target/site-deploy</url>
-    </site>
+<!--    <repository>-->
+<!--      <id>logging.repo</id>-->
+<!--      <url>scp://people.apache.org/www/people.apache.org/builds/logging/repo/</url>-->
+<!--    </repository>-->
+<!--    <site>-->
+<!--      <id>logging.site</id>-->
+<!--      <url>scp://localhost/${user.dir}/target/site-deploy</url>-->
+<!--    </site>-->
   </distributionManagement>
 </project>
 

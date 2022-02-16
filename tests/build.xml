@@ -167,12 +167,12 @@
   <!-- ================================================================= -->  
   <target name="regression" depends="Core, Minimum, Logger, DOM, CustomLevel,
                                      CustomLogger,PatternLayout,
-                                     HierarchyThreshold, DefaultInit, SocketServer,
+                                     HierarchyThreshold, DefaultInit,
                                      XMLLayout, AsyncAppender,
                                      OptionConverter, BoundedFIFO,
                                      CyclicBuffer, OR,
                                      LevelMatchFilter, PatternParser, 
-                                     ErrorHandler,Rewrite"/>
+                                     Rewrite"/>
 
   <!-- ================================================================= -->
   <!-- Longer unit tests                                                 -->
@@ -317,27 +317,6 @@
     <delete file="${basedir}/classes/log4j.properties"/>
   </target>
 
-  <target name="SocketServer" depends="build">
-    <parallel>
-      <java classname="org.apache.log4j.net.ShortSocketServer" 
-          fork="yes" dir="${basedir}">
-   <arg value="8"/> 
-   <arg value="input/socketServer"/> 
-   <classpath refid="tests.classpath"/>
-      </java>
-      <sequential>
-   <sleep seconds="2"/>
-   <junit printsummary="yes" fork="yes" 
-       haltonfailure="${haltonfailure}" dir="${basedir}">
-     <sysproperty key="testNumber" value="1"/>
-     <classpath refid="tests.classpath"/>
-     <formatter type="plain" usefile="false" />
-     <test name="org.apache.log4j.net.SocketServerTestCase" />
-   </junit>
-      </sequential>
-    </parallel>
-  </target>
-
   <target name="XMLLayout" depends="build">
     <junit printsummary="yes" fork="yes" 
         haltonfailure="${haltonfailure}" dir="${basedir}">
@@ -362,15 +341,6 @@
       <classpath refid="tests.classpath"/>
       <formatter type="plain" usefile="false"/>
       <test name="org.apache.log4j.varia.LevelMatchFilterTestCase" />
-    </junit>
-  </target>
-
-  <target name="ErrorHandler" depends="build">
-    <junit printsummary="yes" fork="yes" 
-         haltonfailure="${haltonfailure}" dir="${basedir}">
-      <classpath refid="tests.classpath"/>
-      <formatter type="plain" usefile="false" />
-      <test name="org.apache.log4j.varia.ErrorHandlerTestCase" />
     </junit>
   </target>
 
@@ -465,15 +435,6 @@
       <formatter type="plain" usefile="false"/>
       <test name="org.apache.log4j.nt.NTEventLogAppenderTest" />
     </junit>
-  </target>
-
-  <target name="Socket" depends="build">
-      <junit printsummary="yes" fork="yes" 
-        haltonfailure="${haltonfailure}" dir="${basedir}">
-        <classpath refid="tests.classpath"/>
-        <formatter type="plain" usefile="false"/>
-        <test name="org.apache.log4j.net.SocketAppenderTest" />
-      </junit>
   </target>
 
   <target name="Rewrite" depends="build">
