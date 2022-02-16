@@ -24,4 +24,4 @@ jobs:
           server-password: ${{ secrets.NEXUS_PASSWORD }} # env variable for token in deploy
 
       - name: Maven deploy
-        run: mvn -B deploy
+        run: mvn -B deploy -s $GITHUB_WORKSPACE/settings.xml
